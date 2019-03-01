@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>邮箱验证测试</title>
+</head>
+<body>
+     <form action="">
+        输入：<input type="text" name="chenyongzu" id="chenyongzu" placeholder="请输入邮箱">
+	      <input type="button" value="验证" onclick="checkEmail();">
+    </form>
+
+    <script>
+	function checkEmail(){
+  	  var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+  	  var obj = document.getElementById("chenyongzu");
+ 	   if(obj.value === ""){ 
+ 	       alert("输入不能为空!");
+ 	       return false;
+   	  }else if(!reg.test(obj.value)){ 
+   	     alert("验证不通过!");
+  	      return false;
+  	  }else{
+   	     alert("通过！");
+   	     return true;
+  	  }
+	}
+    </script>
+<body>
+</html>
