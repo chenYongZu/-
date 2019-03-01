@@ -1,0 +1,203 @@
+*{
+    margin:0px;padding:0px;
+}
+
+body{
+    font:12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+}
+
+a{
+    text-decoration:none;
+    color: #404040;
+}
+
+a:hover{
+    color:red;
+}
+
+
+/*整个页面的布局css*/
+/*header*/
+.header,.footer{
+    width:100%;
+    padding:23px;
+}
+
+.headerContainer,.footerContainer{
+    width:1200px;
+    margin:0 auto;
+}
+
+
+.headerContainer a.advice{
+    padding:13px;
+    float:right;
+}
+
+.headerContainer a.advice img,.loginbox img{
+    vertical-align:text-bottom;
+}
+
+.cyz_registerbox{
+    height:722px;
+    background:url("../pic/login_bg.jpg") no-repeat -200px 0;
+}
+
+/*登录框css*/
+.box{
+    width:450px;
+    position:absolute;
+    left:550px;
+    top:40px;
+    background:#E8E8E9;
+}
+.container{
+    width:300px;
+    margin:0 auto;
+}
+
+.register_tip{
+    width:300px;
+    padding-top:30px;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.register_form{
+    width:300px;
+}
+
+.register_form .userbox{
+    width:300px;
+    position:relative;
+}
+
+.userbox label{
+    width:41px;
+    height:42px;
+    background:url("../pic/user.png");
+    position:absolute;
+    left:0px;
+    top:1px;
+}
+
+.userbox input#username,.passwdbox input#password,.checkpasswdbox input#checkpassword,.emailbox input#email,.agebox input#age, .sexbox select#sex{
+    width: 290px;
+    height: 42px;
+    margin: 32px 0 0 0px;
+    padding-left: 10px;
+    display:block;
+    border: none;
+}
+.userbox sex{
+    position: relative;
+    width: 300px;
+}
+
+/*.userbox span{
+    position: absolute;
+    left: 280px;
+    top: 12px;
+    font-size: 14px;
+    color: #0a0a0a;
+}*/
+/*
+
+.sexbox label{
+    width:41px;
+    height:42px;
+   !* background:url("../pic/password.png");*!
+    position:absolute;
+    left:0px;
+    top:1px;
+}
+
+.checkpasswdbox label{
+    width:41px;
+    height:42px;
+    background:url("../pic/password.png");
+    position:absolute;
+    left:0px;
+    top:1px;
+}
+
+.emailbox label{
+    width:41px;
+    height:42px;
+    background:url("../pic/user.png");
+    position:absolute;
+    left:0px;
+    top:1px;
+}
+*/
+
+.register_form .passwdbox{
+    width:300px;
+    position:relative;
+}
+.register_form .checkpasswdbox{
+    width:300px;
+    position:relative;
+}
+.register_form .emailbox{
+    width: 300px;
+    position: relative;
+}
+/*.passwdbox label{
+    width:41px;
+    height:42px;
+    background:url("../pic/password.png");
+    position:absolute;
+    left:0px;
+    top:1px;
+}*/
+
+.login_form .submitbox{
+    width:300px;
+    position: relative;
+}
+
+.submitbox button{
+    width:300px;
+    height:44px;
+    margin-top:32px;
+    font-size:16px;
+    font-weight:600;
+    color:#fff;
+    text-align:center;
+    letter-spacing:5px;
+    background: #4d65ff;
+    border: none;
+    border-radius: 3.2px;
+}
+
+.register_form .registerbox{
+    width:300px;
+    margin-top:24px;
+}
+
+/*
+
+.loginbox a.sina,.loginbox a.alipay{
+    margin-right:26px;
+    display:inline-block;
+    margin:0;
+    padding:0;
+
+}
+*/
+
+.forget-register{
+    width:300px;
+    padding: 18px 0 40px 0;
+}
+
+.forget-register a.register{
+    float:right;
+}
+
+.forget-register a.forget{
+    margin-right:12px;
+    float:right;
+}
+

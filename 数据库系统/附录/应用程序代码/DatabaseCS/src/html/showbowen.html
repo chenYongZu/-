@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>博客系统查询博文</title>
+    <!--
+        <link rel="stylesheet" type="text/css" href="../CSS/login_css.css"/>
+    -->
+    <link type="text/css" rel="stylesheet" href="../CSS/showbowen.css" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body class="bodybox">
+<script>
+    $(document).ready(function () {
+        $("#username").focus();
+        var data_title = localStorage.getItem("title");
+        getbowen(data_title);
+        getcomment(data_title);
+    })
+    function getbowen(searchtitle) {
+
+        $.post("../php/getbowen.php",{
+            "searchtitle":searchtitle
+        },function(data_t){
+            var data = data_t.split("<br>");
+            $.post("../php/getlabel.php",{
+                "label_id":data[3]
+            },function(data_l){
+                $("#label").val(data_l);
+            });
+
+            $("#user").val(data[0]);
+            $("#title").val(data[1]);
+            $("#blog_content").val(data[5]);
+            $("#greatnum").val(data[6]);
+            $("#visit").val(data[7]);
+            $("#publish_date").val(data[8]);
+            $("#comment_num").val(data[9]);
+            localStorage.setItem("blog_id",data[2]);
+        });
+    }
+    function getcomment(searchtitle){
+        $.post("../php/getcomment.php",{
+            "title":searchtitle
+        },function(comment_data) {
+            var commentArray = [];
+            var one = comment_data.split("<pr>");
+            for(var i = 0; i < one.length - 1; ++ i){
+                commentArray[i] = one[i].split("<br>");
+            }
+            var res = document.getElementById("showcommentbox");
+            for(var j = 0; j < one.length - 1; ++ j){
+                for(var k = 1; k < commentArray[j].length - 1; ++ k){
+                    console.log(commentArray[j][k]);
+                    var li = document.createElement("div");
+                    li.className="comment";
+                    if(k===1) {
+                        li.innerHTML = "<span class='dateTime'>"+commentArray[j][k+1]+"</span>"+commentArray[j][k]+"&nbsp;:&nbsp;&nbsp;"+"<br/>"+commentArray[j][k + 2];
+                    }
+                    res.append(li);
+                }
+
+            }
+        });
+    }
+</script>
+
+<div class = "cyz_showblogbox">
+    <div class = "box">
+        <div class = "container">
+            <div class = "showblog_tip">
+                查询博文
+            </div>
+            <div class = "showblog_form">
+                <div class = "titlebox">
+                 <!--   <label for="title">标题：</label>-->
+                    <input type = "text" name = "title" id = "title" disabled="disabled"/>
+                </div>
+                <div class = "basebox">
+                    <label for="user">发表用户:&nbsp;</label>
+                    <input type="text" name="user" id="user" readonly="true"/>
+                    <label for="visit">浏览量:&nbsp;</label>
+                    <input type="text" name="visit" id="visit" readonly="true" />
+                    <label for="label" >标签:&nbsp;</label>
+                    <input type="text" name="" id="label" readonly="true"/>
+                    <label for="publish_date">发表时间:&nbsp; </label>
+                    <input type="text" name="publish_date" id="publish_date" readonly="true"/>
+                </div>
+                <div class = "blog_contentbox">
+                    <!--<label for = "password"></label>-->
+                    <textarea rows="20" cols="150" name = "blog_content" id = "blog_content" disabled="disabled"></textarea>
+                </div>
+                <div class = "greatbox">
+                    <button name = "great" id = "great" content="博文点赞">文章点赞</button>
+                    <input name = "greatnum" id = "greatnum" disabled="disabled"/>
+                    <button name = "comment_sum" id = "comment_sum"disabled="disabled">评论总数</button>
+                    <input name = "comment_num" id = "comment_num" disabled="disabled"/>
+
+                </div>
+                <div class = "commentbox">
+                    <label for = "comment"></label>
+                    <input type = "text" name = "comment" id = "comment" placeholder = "评论内容"/>
+                </div>
+                <div class="submitblogbox">
+                    <button id="submitcomment" name="submitcomment">评论</button>
+                </div>
+                <hr>
+                <div class = "commentbox_tip">
+                    评论列表
+                </div>
+                <div class = "showcommentbox" id = "showcommentbox">
+
+                </div>
+                <div class = "back">
+                    <a href="homepage.html" class = "return_homepage">返回主页</a>
+                    <a href="bowenpage.html" class = "return_back">返回搜索结果</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        $(function(){
+            $("#submitcomment").on("click",function(){
+                var comment = $("#comment").val();
+                var data_title = localStorage.getItem("title");
+                if(comment === ""){
+                    alert("评论不能为空！");
+                }
+                else{
+                    insertcomment(data_title, comment);
+                }
+
+            });
+            $("#user").on("click",function(){
+                var user = $("#user").val();
+
+                localStorage.setItem("user", user);
+                location.href = "showBowenUser.html";
+            });
+            function insertcomment(searchtitle, comment) {
+                var blog_id = localStorage.getItem("blog_id");
+                $.post("../php/insertcomment.php",{
+                    "blog_id":blog_id,
+                    "content":comment
+                },function(data_){
+                    if(data_==="Yes"){
+                        window.location.reload(true);
+                        //location = "homepage.html";
+                    }else{
+                        alert("提交失败！");
+                    }
+                });
+
+            }
+        });
+        $(function(){
+            $("#great").on("click",function(){
+                var blog_id = localStorage.getItem("blog_id");
+                $.post("../php/insertbowengreat.php",{
+                    "blog_id":blog_id,
+                },function(data){
+                    if(data==="Yes"){
+                        //   alert("提交成功");
+                        window.location.reload(true);
+                    }else{
+                        alert("提交失败！");
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+</body>
+
+
+
+</html>

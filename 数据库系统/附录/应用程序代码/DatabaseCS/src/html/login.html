@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>博客系统登录</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../CSS/base.css" />
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            $("#username").focus();
+        })
+    </script>
+
+    <div class = "cyz_loginbox">
+        <div class = "box">
+            <div class = "container">
+                <div class = "login_tip">
+                    系统登录
+                </div>
+                <div class = "login_form">
+                    <div class = "userbox">
+                        <label for = "username"></label>
+                        <input type = "text" name = "username" id = "username" placeholder = "账号昵称"/>
+                    </div>
+                    <div class = "passwdbox">
+                        <label for = "password"></label>
+                        <input type = "password" name = "password" id = "password" placeholder = "密码"/>
+                    </div>
+                    <div class = "submitbox">
+                        <button name = "submit" id="submit">登录</button>
+                    </div>
+                    <div class = "forget-register">
+                        <a href="register.html" class = "register">注册</a>
+                        <!--<a href="" class = "forget">忘记密码</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            $("#submit").on("click",function(){
+                var username = $("#username").val();
+                var pwd = $("#password").val();
+
+                if(username ==="" || pwd ===""){
+                    alert("用户名或秘密不能为空");
+                }
+                else if(pwd.length < 6){
+                    alert("密码长度要在6位以上");
+                }
+                else{
+                    $.post("../php/login.php",{
+                        "username":username,
+                        "pwd":pwd
+                    },function(data){
+                        if(data==="Yes"){
+                            location = "homepage.html";
+                        }else{
+                            alert("用户名或密码有误！");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

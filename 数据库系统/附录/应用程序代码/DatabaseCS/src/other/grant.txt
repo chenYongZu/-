@@ -1,0 +1,10 @@
+use cyz_blog;
+Grant Select, Update on cyz_user to 'cyz_user3'@localhost Identified by '123456';
+Grant Select on cyz_label to 'cyz_user3'@localhost Identified by '123456';
+Grant Select, Update, Insert on cyz_bowen to 'cyz_user3'@localhost Identified by '123456';
+Grant Select, Insert on cyz_ub to 'cyz_user3'@localhost Identified by '123456';
+Grant Insert on cyz_comment to 'cyz_user3'@localhost Identified by '123456';
+Grant Select on cyz_user_view to 'cyz_user3'@localhost Identified by '123456';
+Grant Select on cyz_bowen_view to 'cyz_user3'@localhost Identified by '123456';
+Grant Select on cyz_comment_view to 'cyz_user3'@localhost Identified by '123456';
+exit;

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>博客系统用户信息</title>
+    <!--
+        <link rel="stylesheet" type="text/css" href="../CSS/login_css.css"/>
+    -->
+    <link type="text/css" rel="stylesheet" href="../CSS/showBowenUser.css" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+<script>
+    $(document).ready(function () {
+        var user = localStorage.getItem("user");
+        $.post("../php/showBowenUser.php",{
+            "user":user
+        },function(data){
+            var res = data.split("<br>");
+            $("#user").val(res[0]);
+            $("#sex").val(res[1]);
+            $("#age").val(res[2]);
+            $("#rank").val(res[3]);
+        });
+    })
+</script>
+
+<div class = "cyz_userinfobox">
+    <div class = "box">
+        <div class = "container">
+            <div class = "userinfo_tip">
+                个人信息
+            </div>
+            <div class = "userinfo_form">
+                <div class = "userbox">
+                    <label for = "user">用户名：</label>
+                    <input type = "text" name = "user" id = "user" disabled="disabled" />
+                </div>
+                <div class = "agebox">
+                    <label for = "age">年龄：</label>
+                    <input type = "text" name = "age" id = "age" disabled="disabled"/>
+                </div>
+                <div class = "rankbox">
+                    <label for = "rank">等级：</label>
+                    <input type = "text" name = "rank" id = "rank" disabled="disabled"/>
+                </div>
+                <div class = "sexbox">
+                    <label for = "sex">性别：</label>
+                    <input type = "text" name = "sex" id = "sex" disabled="disabled"/>
+                </div>
+                <div class = "return">
+                    <a href="homepage.html" class = "return">返回主页</a>
+                    <a href="showbowen.html" class = "return_res">返回搜索结果</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#submit").on("click",function(){
+            var user = $("#user").val();
+            var age = $("#age").val();
+            var sex = $("#sex").val();
+            $.post("../php/updateUserInfo.php",{
+                "user":user,
+                "age":age,
+                "sex":sex
+            },function(data){
+                if(data==="Yes"){
+                    location = "homepage.html";
+                }
+            });
+
+        });
+    });
+</script>
+</body>
+
+
+
+</html>

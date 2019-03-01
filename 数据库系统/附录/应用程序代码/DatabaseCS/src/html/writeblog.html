@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>博客系统写博文</title>
+    <!--
+        <link rel="stylesheet" type="text/css" href="../CSS/login_css.css"/>
+    -->
+    <link type="text/css" rel="stylesheet" href="../CSS/writeblogbase.css" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+<script>
+    $(document).ready(function () {
+        $("#username").focus();
+    })
+</script>
+
+<div class = "cyz_writeblogbox">
+    <div class = "box">
+        <div class = "container">
+            <div class = "writeblog_tip">
+                写博文
+            </div>
+            <div class = "writeblog_form">
+                <div class = "titlebox">
+                    <input type = "text" name = "title" id = "title" placeholder = "博文标题"/>
+                </div>
+                <div class = "blog_contentbox">
+                    <!--<label for = "password"></label>-->
+                    <textarea rows="20" cols="150" name = "blog_content" id = "blog_content" placeholder="博文内容"></textarea>
+                </div>
+                <div class = "submitblogbox">
+                    <label for="submit_blog">标签：</label>
+                    <form id="checklabel" >
+                            <span><input type="radio" value="科技" name="checks" id="keji" onclick="oneChoice()">科技</span>
+                            <span><input type="radio" value="情感" name="checks" id="qinggan" onclick="oneChoice()">情感</span>
+                            <span><input type="radio" value="体育" name="checks" id="tiyu" onclick="oneChoice()">体育</span>
+                            <span><input type="radio" value="电影" name="checks" id="dianying" onclick="oneChoice()">电影</span>
+                    </form>
+                    <button id="submit_blog" name="submit_blog">提交博文</button>
+                </div>
+                <div class = "back">
+                    <a href="homepage.html" class = "return">返回主页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        $(function(){
+            $("#submit_blog").on("click",function(){
+                var title = $("#title").val();
+                var blog_content = $("#blog_content").val();
+                var inputGroup = $("input[type='radio']");
+                var label_id = -1;
+                for(var i = 0; i < inputGroup.length; ++ i){
+                    if(inputGroup[i].checked) label_id = i + 1;
+                }
+
+                if(blog_content === "" || label_id === -1 || title === ""){
+                    alert("不能提交空或者没有标签的博文");
+                }
+                else{
+                    $.post("../php/insertbowen.php",{
+                        "title":title,
+                        "blog_content":blog_content,
+                        "label_id":label_id
+                    },function(data){
+                        if(data==="Yes"){
+                            alert("提交成功");
+                            location = "homepage.html";
+                        }else{
+                            alert("请先登录账号！")
+                            location = "login.html";
+                        }
+                    });
+                }
+
+            });
+        });
+    </script>
+</body>
+
+
+
+</html>

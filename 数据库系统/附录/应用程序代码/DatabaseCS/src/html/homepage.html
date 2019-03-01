@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>博客系统主页</title>
+    <!--
+        <link rel="stylesheet" type="text/css" href="../CSS/login_css.css"/>
+    -->
+    <link type="text/css" rel="stylesheet" href="../CSS/homepagebase.css" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+<script>
+    $(document).ready(function () {
+        $("#username").focus();
+    })
+</script>
+
+<div class = "cyz_functionbox">
+    <div class = "box">
+        <div class = "container">
+            <div class = "function_tip">
+                用户功能
+            </div>
+            <div class = "function_form">
+                <div class = "searchblogbox">
+                    <input type = "text" name = "searchtext" id = "searchtext" placeholder = "输入博文关键字"/>
+                    <button name = "search" id = "search">查找博文</button>
+                </div>
+                <div class = "writeblogbox">
+                    <button name = "writeblog" id = "writeblog">写博文</button>
+                </div>
+
+                <div class = "userinfobox">
+                    <button name = "userinfo" id = "userinfo">查看个人信息</button>
+                </div>
+                <div class = "exitbox">
+                    <button name = "exit" id = "exit">退出系统</button>
+                </div>
+<!--                <div class = "submitbox">
+                    <button id="submit" name="submit">查找</button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#exit").on("click",function(){
+            var check = "check";
+            $.post("../php/exit.php",{
+                "check":check
+            },function(data){
+                location = "login.html";
+            });
+        });
+
+    });
+    $(function(){
+        $("#userinfo").on("click",function(){
+            location = "UserInfo.html";
+        });
+    });
+    $(function(){
+        $("#writeblog").on("click",function(){
+            location = "writeblog.html";
+        });
+    });
+    $(function(){
+        $("#search").on("click",function(){
+            var searchtitle = $("#searchtext").val();
+            if(searchtitle === ""){
+                alert("搜索内容不能为空！");
+            }
+            else{
+                localStorage.setItem("searchtitle", searchtitle);
+                location.href = "bowenpage.html";
+            }
+
+        });
+    });
+</script>
+</body>
+
+
+
+</html>

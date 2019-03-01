@@ -1,0 +1,222 @@
+*{
+    margin:0px;padding:0px;
+}
+
+body{
+    font:12px/1.5 "Microsoft YaHei",tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+}
+
+a{
+    text-decoration:none;
+    color: #404040;
+}
+
+a:hover{
+    color:red;
+}
+
+
+/*整个页面的布局css*/
+/*header*/
+.header,.footer{
+    width:100%;
+    padding:23px;
+}
+
+.headerContainer,.footerContainer{
+    width:120px;
+    margin:0 auto;
+}
+
+
+.headerContainer a.advice{
+    padding:13px;
+    float:right;
+}
+
+.headerContainer a.advice img,.loginbox img{
+    vertical-align:text-bottom;
+}
+
+.cyz_userinfobox{
+    height:722px;
+    background:url("../pic/login_bg.jpg") no-repeat -200px 0;
+}
+
+/*登录框css*/
+.box{
+    width:400px;
+    position:absolute;
+    left:550px;
+    top:100px;
+    background:#E8E8E9;
+}
+.container{
+    width:300px;
+    margin:0 auto;
+}
+
+.userinfo_tip{
+    width:300px;
+    padding-top:30px;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.userinfo_form{
+    width:300px;
+}
+
+.userinfo_form .userbox{
+    width:300px;
+    position:relative;
+}
+.userinfo_form .emailbox{
+    width:300px;
+    position:relative;
+}
+.userinfo_form .agebox{
+    width:300px;
+    position:relative;
+}
+.userinfo_form .rankbox{
+    width:300px;
+    position:relative;
+}
+.userinfo_form .reg_timebox{
+    width:300px;
+    position:relative;
+}
+.userinfo_form .sexbox{
+    width:300px;
+    position:relative;
+}
+
+.userbox label{
+    width:55px;
+    height:42px;
+    position:absolute;
+    left:0px;
+    top:10px;
+}
+.emailbox label{
+    width:60px;
+    height:42px;
+    position:absolute;
+    left:-10px;
+    top:10px;
+}
+.agebox label{
+    width:60px;
+    height:42px;
+    position:absolute;
+    left:10px;
+    top:10px;
+}
+.rankbox label{
+    width:60px;
+    height:42px;
+    position:absolute;
+    left:10px;
+    top:10px;
+}
+
+.sexbox label{
+    width:60px;
+    height:42px;
+    position:absolute;
+    left:10px;
+    top:10px;
+}
+
+.reg_timebox label{
+    width:60px;
+    height:42px;
+    position:absolute;
+    left:-10px;
+    top:10px;
+}
+
+.sexbox label{
+    width:60px;
+    height:42px;
+    position:absolute;
+    left:10px;
+    top:10px;
+}
+
+.userbox input#user,.emailbox input#email,.reg_timebox input#reg_time,.agebox input#age,.rankbox input#rank,.agebox input#age,.sexbox input#sex{
+    width: 249px;
+    height: 42px;
+    margin: 32px 0 0 41px;
+    padding-left: 10px;
+    display:block;
+    border: none;
+}
+.sexbox input#sex{
+    width: 249px;
+    height: 42px;
+    margin: 32px 0 0 41px;
+    padding-left: 10px;
+    display:block;
+    border: none;
+}
+
+
+
+
+.userinfo_form .passwdbox{
+    width:300px;
+    position:relative;
+}
+.userinfo_form .checkpasswdbox{
+    width:300px;
+    position:relative;
+}
+.userinfo_form .emailbox{
+    width: 300px;
+    position: relative;
+}
+/*.passwdbox label{
+    width:41px;
+    height:42px;
+    background:url("../pic/password.png");
+    position:absolute;
+    left:0px;
+    top:1px;
+}*/
+
+
+.userinfo_form .userinfobox{
+    width:300px;
+    margin-top:24px;
+}
+
+/*
+
+.loginbox a.sina,.loginbox a.alipay{
+    margin-right:26px;
+    display:inline-block;
+    margin:0;
+    padding:0;
+
+}
+*/
+
+.return{
+    width:300px;
+    padding: 18px 0 10px 0;
+}
+
+
+.return a.return_res{
+
+    padding-left: 220px;
+}
+.return a.return{
+    padding-left: 220px;
+}
+
+
+
+
